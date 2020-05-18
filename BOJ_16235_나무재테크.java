@@ -5,24 +5,24 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class BOJ_16235_³ª¹«ÀçÅ×Å© {
+public class BOJ_16235_ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å© {
 	static int N, M, K;
 	static int[][] A;
 	static List<Tree> tree;
+	static List<Tree> dtree, newtree;
 	static int[][] food;
 	static int[] di = {-1,-1,-1,0,0,1,1,1};
 	static int[] dj = {-1,0,1,-1,1,-1,0,1};
-	static List<Tree> dtree, newtree;
 	
 	public static void spring() {
-		for(Iterator<Tree> itt = tree.iterator();itt.hasNext();) { // iterator »ç¿ëÇÑ Á¢±Ù
+		for(Iterator<Tree> itt = tree.iterator();itt.hasNext();) { // iterator ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			Tree t = itt.next();
 			if(food[t.x][t.y]>=t.age) {
 				food[t.x][t.y] = food[t.x][t.y] - t.age;
 				t.age++;
 			}else {
 				dtree.add(t);
-				itt.remove(); // iterator »ç¿ë½Ã ¼øÈ¯Áß¿¡ ¸®½ºÆ® »èÁ¦ °¡´É
+				itt.remove(); // iterator ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ß¿ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			}
 		}
 	}
@@ -67,8 +67,8 @@ public class BOJ_16235_³ª¹«ÀçÅ×Å© {
 		String[] strArr = str.split(" ");
 		
 		N = Integer.parseInt(strArr[0]);
-		M = Integer.parseInt(strArr[1]); // M°³ÀÇ ³ª¹«
-		K = Integer.parseInt(strArr[2]); // K³âÀÌ Áö³­ ÈÄ »ì¾ÆÀÖ´Â ³ª¹« °³¼ö ±¸ÇÏ±â
+		M = Integer.parseInt(strArr[1]); // Mï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		K = Integer.parseInt(strArr[2]); // Kï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
 		
 		A = new int[N][N];
 		food = new int[N][N];
