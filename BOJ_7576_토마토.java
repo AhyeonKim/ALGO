@@ -6,65 +6,57 @@ public class BOJ_7576_토마토 {
 	static int M;
 	static int N;
 	static int[][] arr;
-	static boolean[][] visit;
 	static int[] di = {-1,0,1,0};
 	static int[] dj = {0,-1,0,1};
+	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		M = sc.nextInt(); // 가로 칸의 수
 		N = sc.nextInt(); // 세로 칸의 수
-		arr = new int[M][N];
-		visit = new boolean[M][N];
+		arr = new int[N][M];
 		Queue<Tomato> tomato = new LinkedList<>();
-		
-		for (int i = 0; i < M; i++) {
-			for (int j = 0; j < N; j++) {
-				arr[i][j] = sc.nextInt();
-				if(arr[i][j]==1) {
-					visit[i][j] = true;
-					tomato.add(new Tomato(i,j,0));
-				}
-			}
-		}
 		int ans = 0;
 		boolean flag1 = false;
-		for (int i = 0; i < M; i++) {
-			for (int j = 0; j < N; j++) {
-				if(arr[i][j]==0) {
+		boolean flag2 = false;
+		
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < M; j++) {
+				arr[i][j] = sc.nextInt();
+				if(arr[i][j]==1 || arr[i][j]==-1) {
+					if(arr[i][j]==1) {
+						tomato.add(new Tomato(i,j,0));
+					}
+				}else {
 					flag1 = true;
-					break;
 				}
 			}
 		}
+		
 		if(flag1) {
 			while(!tomato.isEmpty()) {
 				Tomato t = tomato.poll();
+				ans = t.day;
 				for (int d = 0; d < 4; d++) {
 					int ni = t.x+di[d];
 					int nj = t.y+dj[d];
-					if(!isOut(ni,nj) && !visit[ni][nj]) {
-						visit[ni][nj] = true;
-						if(arr[ni][nj]==1) {
-							tomato.add(new Tomato(ni,nj,++t.day));
-						}
+					if(!isOut(ni,nj) && arr[ni][nj]==0) {
+						arr[ni][nj] = 1;
+						tomato.add(new Tomato(ni,nj,t.day+1));
 					}
 				}
-				ans = t.day;
+			}
+			
+			for (int i = 0; i < N; i++) {
+				for (int j = 0; j < M; j++) {
+					if(arr[i][j]==0) {
+						flag2 = true;
+						break;
+					}
+				}
 			}
 		}
 		
-		boolean flag2 = false;
-		for (int i = 0; i < M; i++) {
-			for (int j = 0; j < N; j++) {
-				if(visit[i][j]==false) {
-					flag2 = true;
-					break;
-				}
-			}
-		}
-		if(!flag1) {
-			System.out.println(0);
-		}else if(flag2) {
+		if(flag2) {
 			System.out.println(-1);
 		}else {
 			System.out.println(ans);
@@ -86,7 +78,7 @@ public class BOJ_7576_토마토 {
 		}
 	}
 	public static boolean isOut(int i, int j) {
-		if(i<0 || j<0 | i>=M || j>=N) {
+		if(i<0 || j<0 | i>=N || j>=M) {
 			return true;
 		}else return false;
 	}
