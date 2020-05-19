@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class BOJ_1916_ÃÖ¼Òºñ¿ë±¸ÇÏ±â {
+public class BOJ_1916_ìµœì†Œë¹„ìš©êµ¬í•˜ê¸° {
 	static int N, M;
 	static int start,end;
 	static int[][] bus;
@@ -59,7 +59,7 @@ public class BOJ_1916_ÃÖ¼Òºñ¿ë±¸ÇÏ±â {
 		connect = new boolean[N+1][N+1];
 		
 		int a, b, c;
-		for (int i = 0; i < M; i++) { //µÎ Á¤Á¡ »çÀÌ¿¡ °£¼±ÀÌ ¿©·¯°³ ¿Ã ¼ö ÀÖÀ½. ÃÖ¼Òºñ¿ëÀÏ ¶§¸¸ ÀúÀå
+		for (int i = 0; i < M; i++) { //ë‘ ì •ì  ì‚¬ì´ì— ê°„ì„ ì´ ì—¬ëŸ¬ê°œ ì˜¬ ìˆ˜ ìžˆìŒ. ìµœì†Œë¹„ìš©ì¼ ë•Œë§Œ ì €ìž¥
 			st = new StringTokenizer(br.readLine()," ");
 			a = Integer.parseInt(st.nextToken());
 			b = Integer.parseInt(st.nextToken());

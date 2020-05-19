@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class BOJ_1238_ÆÄÆ¼ {
+public class BOJ_1238_íŒŒí‹° {
 	static int N, M, X;
 	static int[][] map;
 	static int[] distance;
@@ -22,8 +22,8 @@ public class BOJ_1238_ÆÄÆ¼ {
 			}
 		}
 		
-		for (int j = 0; j < N-1; j++) { //N-1¹ø µ¹¸é µÊ
-			//ÃÖ¼Ò index Ã£±â
+		for (int j = 0; j < N-1; j++) { //N-1ë²ˆ ëŒë©´ ë¨
+			//ìµœì†Œ index ì°¾ê¸°
 			int min = Integer.MAX_VALUE;
 			int min_index = -1;
 					
@@ -63,8 +63,8 @@ public class BOJ_1238_ÆÄÆ¼ {
 			}
 		}
 		
-		for (int j = 0; j < N-1; j++) { //N-1¹ø µ¹¸é µÊ
-			//ÃÖ¼Ò index Ã£±â
+		for (int j = 0; j < N-1; j++) { //N-1ë²ˆ ëŒë©´ ë¨
+			//ìµœì†Œ index ì°¾ê¸°
 			int min = Integer.MAX_VALUE;
 			int min_index = -1;
 					
@@ -101,20 +101,18 @@ public class BOJ_1238_ÆÄÆ¼ {
 			map[sc.nextInt()][sc.nextInt()]=sc.nextInt();
 		}
 		int max = 0;
-		dijkstra(X); // X¿¡¼­ °¢ÀÚ ÁýÀ¸·Î °¡´Â°Í
+		dijkstra(X); // Xì—ì„œ ê°ìž ì§‘ìœ¼ë¡œ ê°€ëŠ”ê²ƒ
 		
-		// X·Î °¡´Â°Í
+		// Xë¡œ ê°€ëŠ”ê²ƒ
 		int[] go = new int[N+1];
 		for (int i = 1; i < N+1; i++) {
-			go[i]=dijkstra_2(i,X); // X¿¡ µµ´ÞÇÏ¸é ¸ØÃß°í °ª ¹ÝÈ¯ÇÏ´Â dijkstra
+			go[i]=dijkstra_2(i,X); // Xì— ë„ë‹¬í•˜ë©´ ë©ˆì¶”ê³  ê°’ ë°˜í™˜í•˜ëŠ” dijkstra
 		}
 		
-		// °¢ ÀÎµ¦½º ¿À°í°¡´Â°Í ÇÕ Áß max Ã£±â
+		// ê° ì¸ë±ìŠ¤ ì˜¤ê³ ê°€ëŠ”ê²ƒ í•© ì¤‘ max ì°¾ê¸°
 		for (int i = 1; i < N+1; i++) {
 			max = Integer.max(max, go[i]+distance[i]);
 		}
 		System.out.println(max);
 	}
 }
-
-

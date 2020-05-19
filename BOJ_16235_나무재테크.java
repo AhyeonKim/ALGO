@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class BOJ_16235_��������ũ {
+public class BOJ_16235_나무재테크 {
 	static int N, M, K;
 	static int[][] A;
 	static List<Tree> tree;
@@ -15,14 +15,14 @@ public class BOJ_16235_��������ũ {
 	static int[] dj = {-1,0,1,-1,1,-1,0,1};
 	
 	public static void spring() {
-		for(Iterator<Tree> itt = tree.iterator();itt.hasNext();) { // iterator ����� ����
+		for(Iterator<Tree> itt = tree.iterator();itt.hasNext();) { // iterator
 			Tree t = itt.next();
 			if(food[t.x][t.y]>=t.age) {
 				food[t.x][t.y] = food[t.x][t.y] - t.age;
 				t.age++;
 			}else {
 				dtree.add(t);
-				itt.remove(); // iterator ���� ��ȯ�߿� ����Ʈ ���� ����
+				itt.remove(); // iterator를 활용하여 리스트 순환 중 객체 삭제
 			}
 		}
 	}
@@ -67,8 +67,8 @@ public class BOJ_16235_��������ũ {
 		String[] strArr = str.split(" ");
 		
 		N = Integer.parseInt(strArr[0]);
-		M = Integer.parseInt(strArr[1]); // M���� ����
-		K = Integer.parseInt(strArr[2]); // K���� ���� �� ����ִ� ���� ���� ���ϱ�
+		M = Integer.parseInt(strArr[1]);
+		K = Integer.parseInt(strArr[2]);
 		
 		A = new int[N][N];
 		food = new int[N][N];
