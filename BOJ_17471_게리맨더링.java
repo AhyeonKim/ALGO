@@ -32,9 +32,9 @@ public class BOJ_17471_게리맨더링 {
 		
 		min = Integer.MAX_VALUE;
 		
-		// Group A, B 조합으로 나누기
-		// A끼리 모두 연결, B끼리 모두 연결 되어있을 때
-		// 차이를 계산 min보다 작은 값이면 min을 갱신
+		for (int i = 0; i < N/2; i++) {
+			Comb(i,)
+		}
 		
 		System.out.println(min);
 	}
