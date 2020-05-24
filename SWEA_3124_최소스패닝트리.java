@@ -45,8 +45,8 @@ public class SWEA_3124_최소스패닝트리 {
 		while(mst.size() < (N-1)) {
 			Edge edge = pq.poll();
 			
-			if(find(edge.start)!=find(edge.end)) {
-				union(edge.start,edge.end);
+			if(find(edge.start)!=find(edge.end)) { //사이클을 이루는지 확인
+				union(edge.start,edge.end); //같은 색으로 칠해줌
 				mst.add(edge);
 			}
 		}
@@ -55,7 +55,7 @@ public class SWEA_3124_최소스패닝트리 {
 		if(disjoint[n]==n) {
 			return n;
 		}
-		disjoint[n] = find(disjoint[n]);
+		disjoint[n] = find(disjoint[n]); //찾으면서 값을 바꿔줌
 		return disjoint[n];
 	}
 	
@@ -64,7 +64,7 @@ public class SWEA_3124_최소스패닝트리 {
 		int p2 = find(n2);
 		
 		if(p1!=p2) {
-			disjoint[p2]=p1;
+			disjoint[p2]=p1; //p2의 root 정보를 p1으로 변경
 		}
 	}
 	static class Edge{
