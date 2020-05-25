@@ -13,6 +13,7 @@ public class BOJ_17471_게리맨더링 {
 	static int min;
 	static boolean[] visit;
 	static ArrayList<Integer> groupA, groupB;
+	static boolean divide;
 	
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -33,20 +34,12 @@ public class BOJ_17471_게리맨더링 {
 				connect[i][Integer.parseInt(st.nextToken())-1] = 1;
 			}
 		}
-		
-		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < N; j++) {
-				System.out.print(connect[i][j]+" ");
-			}
-			System.out.println();
-		}
-		
 		min = Integer.MAX_VALUE;
 		
 		visit = new boolean[N];
 		Comb(0,0);
 		
-		System.out.println(min);
+		System.out.println(divide?min:-1);
 	}
 	
 	public static void Comb(int target, int cnt) {
@@ -60,23 +53,16 @@ public class BOJ_17471_게리맨더링 {
 					groupB.add(j);
 				}
 			}
-			for (int j = 0; j < groupA.size(); j++) {
-				System.out.print(groupA.get(j)+" ");
-			}
-			System.out.println();
-			for (int j = 0; j < groupB.size(); j++) {
-				System.out.print(groupB.get(j)+" ");
-			}
-			System.out.println();
-			System.out.println("-----------------");
 			
+			divide = false;
 			if(isConnect(groupA) && isConnect(groupB)) {
-				
+				divide = true;
 				
 				int tmp = Math.abs(sum(groupA)-sum(groupB));
 				if(tmp<min) {
 					min = tmp;
 				}
+				
 			}
 		} 
 		else {
@@ -116,3 +102,4 @@ public class BOJ_17471_게리맨더링 {
 		return sum;
 	}
 }
+
