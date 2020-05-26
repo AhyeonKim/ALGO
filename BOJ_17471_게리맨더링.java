@@ -53,16 +53,25 @@ public class BOJ_17471_게리맨더링 {
 					groupB.add(j);
 				}
 			}
-			
-			divide = false;
-			if(isConnect(groupA) && isConnect(groupB)) {
-				divide = true;
-				
-				int tmp = Math.abs(sum(groupA)-sum(groupB));
-				if(tmp<min) {
-					min = tmp;
+			if(groupA.size()>0 && groupB.size()>0) {
+				if(isConnect(groupA) && isConnect(groupB)) {
+					for (int i = 0; i < groupA.size(); i++) {
+						System.out.print(groupA.get(i)+" ");
+					}
+					System.out.println();
+					System.out.println();
+					for (int i = 0; i < groupB.size(); i++) {
+						System.out.print(groupB.get(i)+" ");
+					}
+					System.out.println();
+					System.out.println("------------------------");
+					
+					divide = true;
+					int tmp = Math.abs(sum(groupA)-sum(groupB));
+					if(tmp<min) {
+						min = tmp;
+					}
 				}
-				
 			}
 		} 
 		else {
@@ -84,11 +93,12 @@ public class BOJ_17471_게리맨더링 {
 				}
 			}
 		}
-		
-		for (int i = 0; i < group.size(); i++) {
-			if(!tmp.contains(group.get(i))) {
-				flag = false;
-				break;
+		if(group.size()>1) {
+			for (int i = 0; i < group.size(); i++) {
+				if(!tmp.contains(group.get(i))) {
+					flag = false;
+					break;
+				}
 			}
 		}
 		return flag;
@@ -102,4 +112,3 @@ public class BOJ_17471_게리맨더링 {
 		return sum;
 	}
 }
-
