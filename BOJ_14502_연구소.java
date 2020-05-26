@@ -39,9 +39,6 @@ public class BOJ_14502_연구소 {
 		System.out.println(ans);
 	}
 	public static void Comb(int R, int target, int cnt) {
-		if(target > blank.size()) {
-			return;
-		}
 		if(R==cnt) {
 			for (int i = 0; i < check.length; i++) {
 				if(check[i]) {
@@ -59,12 +56,13 @@ public class BOJ_14502_연구소 {
 			}
 			return;
 		}
-		if (target < blank.size()){
-			check[target] = true;
-			Comb(R,target+1,cnt+1);
-			check[target] = false;
-			Comb(R,target+1,cnt);
+		if(target == blank.size()) {
+			return;	
 		}
+		check[target] = true;
+		Comb(R,target+1,cnt+1);
+		check[target] = false;
+		Comb(R,target+1,cnt);
 	}
 	
 	private static int bfs() {
