@@ -61,7 +61,6 @@ public class BOJ_14503_로봇청소기 {
 			if(!flag) {
 				continue;
 			}else {
-				d = (d+1)%4;
 				r = r-di[d];
 				c = c-dj[d];
 				if(map[r][c] == 1) {
