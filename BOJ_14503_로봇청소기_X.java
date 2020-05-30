@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class BOJ_14503_로봇청소기 {
+public class BOJ_14503_로봇청소기_X {
 	static int N, M;
 	static int[][] map;
 	static int ans;
