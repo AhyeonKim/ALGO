@@ -5,16 +5,16 @@ import java.util.Scanner;
 public class BOJ_15686_치킨배달 {
 	static int N,M;
 	static int[][] map;
+	static int[] selected;
+	static List<Cell> homes, stores;
+	static int ans;
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		N = sc.nextInt();
-		M = sc.nextInt(); //치킨집 개수 1<=M<=13
-		List<Cell> homes = new LinkedList<>();
-		List<Cell> stores = new LinkedList<>();
-//		selected = List<>();
-//		for (int i = 0;i < indexlist.length,i++) {
-//			selected.push(stores[indexlist[i]])
-//		}
+		M = sc.nextInt();
+		homes = new LinkedList<>();
+		stores = new LinkedList<>();
+		ans = Integer.MAX_VALUE;
 		map = new int[N][N];
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N; j++) {
@@ -26,16 +26,10 @@ public class BOJ_15686_치킨배달 {
 				}
 			}
 		}
-		store = [[0,1],[1,3],[3,5],[4,5]]
-		M = 2
-		home [0,1]
-		(a,b)(a,c)(a,d)(a,e)
-		// store.size개 중 M개 뽑기 - >M개의 치킨집이 있을경우 -> 집과 가까운 치킨집 거리의합
-		for (int i = M; i < args.length; i++) {
-			
-		}
+		selected = new int[M];
+		comb(selected, 0, 0);
 		
-		
+		System.out.println(ans);
 	}
 	
 	public static class Cell{
@@ -51,8 +45,30 @@ public class BOJ_15686_치킨배달 {
 		}
 	}
 	
-	public static void Comb() {
+	public static void comb(int[] selected, int cnt, int target) {
+		if(cnt==M) {
+			int chicken_d = 0;
+			for (int i = 0; i < homes.size(); i++) {
+				int distance = Integer.MAX_VALUE;
+				for (int j = 0; j < selected.length; j++) {
+					int tmpd = getDistance(homes.get(i), stores.get(selected[j]));
+					if(tmpd<distance) {
+						distance = tmpd;
+					}
+				}
+				chicken_d += distance;
+			}
+			if(chicken_d<ans) {
+				ans = chicken_d;
+			}
+			return;
+		}else if(target==stores.size()) {
+			return;
+		}
 		
+		selected[cnt]=target;
+		comb(selected,cnt+1, target+1);
+		comb(selected,cnt, target+1);
 	}
 	
 	public static int getDistance(Cell c1, Cell c2) {
