@@ -37,7 +37,6 @@ public class BOJ_15686_치킨배달 {
 		int y;
 		
 		public Cell() {
-			// TODO Auto-generated constructor stub
 		}
 		public Cell(int x, int y) {
 			this.x = x;
